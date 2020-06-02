@@ -1,6 +1,7 @@
 package com.gmail.goyter012.labs_realtimesys_android.activity
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -10,7 +11,8 @@ import com.gmail.goyter012.labs_realtimesys_android.fragment.SecondFragment
 import com.gmail.goyter012.labs_realtimesys_android.fragment.ThirdFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+
 
     private lateinit var toolbar: ActionBar
 
@@ -20,28 +22,8 @@ class MainActivity : AppCompatActivity() {
 
         toolbar = supportActionBar!!
         setupFirst()
-
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_bar)
-
-        bottomNavigation.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.first_lab -> {
-                    setupFirst()
-                    return@setOnNavigationItemSelectedListener true
-                }
-                R.id.second_lab -> {
-                    setupSecond()
-                    return@setOnNavigationItemSelectedListener true
-                }
-                R.id.third_lab -> {
-                    setupThird()
-                    return@setOnNavigationItemSelectedListener true
-                }
-            }
-            false
-        }
-
-
+        bottomNavigation.setOnNavigationItemSelectedListener(this)
     }
 
 
@@ -53,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupSecond() {
         toolbar.title = applicationContext.getString(R.string.lab2_title)
-        val secondFragment= SecondFragment.newInstance()
+        val secondFragment = SecondFragment.newInstance()
         openFragment(secondFragment)
 
     }
@@ -66,10 +48,29 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun openFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.container, fragment)
-        transaction.addToBackStack(null)
-        transaction.commitAllowingStateLoss()
+        this.supportFragmentManager.beginTransaction()
+            .replace(R.id.container, fragment, "findThisFragment")
+            .addToBackStack(null)
+            .commit();
+    }
+
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.first_lab -> {
+                setupFirst()
+                return true
+            }
+            R.id.second_lab -> {
+                setupSecond()
+                return true
+            }
+            R.id.third_lab -> {
+                setupThird()
+                return true
+            }
+        }
+        return false
     }
 
 

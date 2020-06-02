@@ -26,7 +26,7 @@ class ThirdFragment : Fragment() {
         layout.background = ResourcesCompat.getDrawable(resources, R.drawable.wallpaper3, null)
 
 
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return view
     }
 
 

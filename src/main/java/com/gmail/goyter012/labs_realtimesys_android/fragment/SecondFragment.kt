@@ -26,7 +26,7 @@ class SecondFragment : Fragment() {
 
         layout.background = ResourcesCompat.getDrawable(resources, R.drawable.wallpaper2, null)
 
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return view
     }
 
     companion object {

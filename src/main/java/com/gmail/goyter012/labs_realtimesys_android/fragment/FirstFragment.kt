@@ -28,7 +28,7 @@ class FirstFragment : Fragment() {
         layout.background = ResourcesCompat.getDrawable(resources, R.drawable.wallpaper1, null)
 
 
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return view
     }
 
 
