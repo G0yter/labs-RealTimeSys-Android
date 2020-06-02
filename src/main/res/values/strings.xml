@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">labs-RealTimeSys-Android</string>
+
+
+    <string name="lab1_title">Lab 1</string>
+    <string name="lab2_title">Lab 2</string>
+    <string name="lab3_title">Lab 3</string>
+
+
+</resources>
