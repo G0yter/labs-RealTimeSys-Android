@@ -8,7 +8,11 @@
 
     <string name="numb_hint">Number</string>
     <string name="deadline_hint">Deadline</string>
+    <string name="iterations_hint">Iterations</string>
+    <string name="rate_hint">Rate</string>
+
     <string name="calculate_button_title">Calculate</string>
+
     
     <string name="res_alert_message">Result: %1$s</string>
     <string name="error_alert_message">Error! Impossible to calculate</string>

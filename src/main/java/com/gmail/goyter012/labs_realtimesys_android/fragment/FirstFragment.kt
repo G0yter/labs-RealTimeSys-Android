@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.gmail.goyter012.labs_realtimesys_android.R
+import com.gmail.goyter012.labs_realtimesys_android.util.LabsUtil
 import com.google.android.material.textfield.TextInputEditText
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -36,28 +36,6 @@ class FirstFragment : Fragment(), View.OnClickListener {
         return view
     }
 
-    private fun showAlert(isSuccess: Boolean, res: String?) {
-        val resultAlert = AlertDialog.Builder(this@FirstFragment.context!!)
-        if (isSuccess)
-            resultAlert.setMessage(
-                String.format(
-                    context!!.getString(R.string.res_alert_message),
-                    res
-                )
-            )
-        else
-            resultAlert.setMessage(
-                String.format(
-                    context!!.getString(R.string.error_alert_message),
-                    res
-                )
-            )
-        resultAlert.setPositiveButton("OK") { dialog, _ ->
-            dialog.dismiss()
-        }
-        resultAlert.show()
-    }
-
 
     private fun doFerma(num: Int, deadline: Long): IntArray {
         val result = IntArray(2)
@@ -82,7 +60,7 @@ class FirstFragment : Fragment(), View.OnClickListener {
             result[1] = (x - y).toInt()
             return result
         } else {
-            showAlert(false, null)
+            LabsUtil(context!!).showAlert(false, null)
             return intArrayOf(-1, -1)
         }
     }
@@ -107,14 +85,14 @@ class FirstFragment : Fragment(), View.OnClickListener {
                     val deadline =
                         view?.findViewById<TextInputEditText>(R.id.deadline_textField_lab1)?.text.toString().toLong() * 1_000_000_000
 
-                    if (isPrimeNumb(num)) showAlert(
+                    if (isPrimeNumb(num)) LabsUtil(context!!).showAlert(
                         true,
                         String.format(
                             context?.getString(R.string.res_alert_message)!!,
                             "The number is prime!"
                         )
                     )
-                    else if (num % 2 == 0) showAlert(
+                    else if (num % 2 == 0) LabsUtil(context!!).showAlert(
                         true,
                         String.format(
                             context?.getString(R.string.res_alert_message)!!,
@@ -124,7 +102,7 @@ class FirstFragment : Fragment(), View.OnClickListener {
                     else {
                         val results = doFerma(num, deadline)
                         if (results[0] != -1) {
-                            showAlert(
+                            LabsUtil(context!!).showAlert(
                                 true,
                                 String.format(
                                     context?.getString(R.string.res_alert_message)!!,
@@ -141,7 +119,7 @@ class FirstFragment : Fragment(), View.OnClickListener {
 
 
                 } catch (e: NumberFormatException) {
-                    showAlert(false, null)
+                    LabsUtil(context!!).showAlert(false, null)
                 }
 
             }
