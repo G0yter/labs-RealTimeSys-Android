@@ -10,6 +10,12 @@
     <string name="deadline_hint">Deadline</string>
     <string name="iterations_hint">Iterations</string>
     <string name="rate_hint">Rate</string>
+    <string name="a_hint">a</string>
+    <string name="b_hint">b</string>
+    <string name="c_hint">c</string>
+    <string name="d_hint">d</string>
+    <string name="y_hint">y</string>
+    <string name="mutation_hint">Mutation</string>
 
     <string name="calculate_button_title">Calculate</string>
 
