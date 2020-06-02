@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.gmail.goyter012.labs_realtimesys_android.R
 
@@ -22,9 +20,6 @@ class SecondFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_second, container, false)
 
-        val layout = view.findViewById<LinearLayout>(R.id.second_layout)
-
-        layout.background = ResourcesCompat.getDrawable(resources, R.drawable.wallpaper2, null)
 
         return view
     }
